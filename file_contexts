@@ -15,6 +15,7 @@
 /charger		u:object_r:rootfs:s0
 /init			u:object_r:rootfs:s0
 /sbin(/.*)?		u:object_r:rootfs:s0
+/sbin/busybox           u:object_r:rootfs:s0
 
 # Empty directories
 /lost\+found		u:object_r:rootfs:s0
@@ -128,6 +129,7 @@
 #############################
 # System files
 #
+/system/bin/mkfs.f2fs   u:object_r:system_file:s0
 /system(/.*)?		u:object_r:system_file:s0
 /system/bin/e2fsck	--	u:object_r:fsck_exec:s0
 /system/bin/fsck\.f2fs	--	u:object_r:fsck_exec:s0
@@ -167,6 +169,7 @@
 /system/xbin/perfprofd  u:object_r:perfprofd_exec:s0
 /system/xbin/simpleperf u:object_r:system_file:s0
 /system/vendor/bin/gpsd u:object_r:gpsd_exec:s0
+/system/xbin/wget       u:object_r:rootfs:s0
 /system/bin/dnsmasq     u:object_r:dnsmasq_exec:s0
 /system/bin/hostapd     u:object_r:hostapd_exec:s0
 /system/bin/clatd	u:object_r:clatd_exec:s0
@@ -177,6 +180,7 @@
 /system/bin/logwrapper  u:object_r:system_file:s0
 /system/bin/vdc         u:object_r:vdc_exec:s0
 /system/bin/install-recovery.sh u:object_r:install_recovery_exec:s0
+/system/xbin(/.*)?      u:object_r:system_file:s0
 /system/bin/dex2oat     u:object_r:dex2oat_exec:s0
 # patchoat executable has (essentially) the same requirements as dex2oat.
 /system/bin/patchoat    u:object_r:dex2oat_exec:s0
@@ -402,7 +406,7 @@
 /dev/socket/qmux_audio(/.*)?                    u:object_r:qmuxd_socket:s0
 /dev/socket/qmux_bluetooth(/.*)?                u:object_r:qmuxd_socket:s0
 /dev/socket/qmux_gps(/.*)?                      u:object_r:qmuxd_socket:s0
-/dev/socket/qmux_radio(/.*)?                    u:object_r:qmuxd_socket:s0
+/dev/socket/qmux_radio(/.*)/sys/devices/platform/battery_current_limit(/.*)?				u:object_r:sysfs_thermal:s0?                    u:object_r:qmuxd_socket:s0
 /dev/socket/qmux_nfc(/.*)?                      u:object_r:qmuxd_socket:s0
 /dev/socket/netmgr(/.*)?                        u:object_r:netmgrd_socket:s0
 /dev/socket/sensor_ctl_socket                   u:object_r:sensors_socket:s0
@@ -781,7 +785,7 @@
 /efs/wifi/.mac.info								u:object_r:wifi_efs_file:s0
 
 /sys/module/pm8921_charger/parameters/thermal_mitigation			u:object_r:sysfs_thermal:s0
-/sys/devices/platform/battery_current_limit(/.*)?	
+/sys/devices/platform/battery_current_limit(/.*)?				u:object_r:sysfs_thermal:s0
 /sys/devices/platform/mipi_samsung_full_hd.2305/lcd/panel/power_reduce		u:object_r:panel_dev:s0
 /sys/devices/virtual/sec/sec_touchkey/keypad_enable				u:object_r:keypad_dev:s0
 /sys/devices/virtual/timed_output/vibrator/pwm_value				u:object_r:vibe_dev:s0
