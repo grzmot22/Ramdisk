@@ -15,7 +15,6 @@
 /charger		u:object_r:rootfs:s0
 /init			u:object_r:rootfs:s0
 /sbin(/.*)?		u:object_r:rootfs:s0
-/sbin/busybox           u:object_r:rootfs:s0
 
 # Empty directories
 /lost\+found		u:object_r:rootfs:s0
@@ -406,7 +405,7 @@
 /dev/socket/qmux_audio(/.*)?                    u:object_r:qmuxd_socket:s0
 /dev/socket/qmux_bluetooth(/.*)?                u:object_r:qmuxd_socket:s0
 /dev/socket/qmux_gps(/.*)?                      u:object_r:qmuxd_socket:s0
-/dev/socket/qmux_radio(/.*)/sys/devices/platform/battery_current_limit(/.*)?				u:object_r:sysfs_thermal:s0?                    u:object_r:qmuxd_socket:s0
+/dev/socket/qmux_radio(/.*)?                    u:object_r:qmuxd_socket:s0
 /dev/socket/qmux_nfc(/.*)?                      u:object_r:qmuxd_socket:s0
 /dev/socket/netmgr(/.*)?                        u:object_r:netmgrd_socket:s0
 /dev/socket/sensor_ctl_socket                   u:object_r:sensors_socket:s0
