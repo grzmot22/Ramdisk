@@ -31,8 +31,7 @@ import init.target.rc
 import init.carrier.rc
 
 on init
-    # Use this trick to get a running rild
-    export LD_SHIM_LIBS /system/lib/libril.so|libril_jflte.so
+    export LD_SHIM_LIBS /system/lib/libril.so|libsamsung_symbols.so
 
     # Set permissions for persist partition
     mkdir /persist 0771 system system
@@ -93,10 +92,6 @@ on boot
     chmod 2770 /data/misc/perfd
     mkdir /data/system/perfd 0770 root system
     chmod 2770 /data/system/perfd
-
-    setprop wifi.interface wlan0
-
-    setprop ro.telephony.call_ring.multiple false
 
     #Set SUID bit for usbhub
     #chmod 4755 /system/bin/usbhub
@@ -173,6 +168,10 @@ on boot
     # initialize MDM modem
     write /sys/module/rmnet_usb/parameters/rmnet_data_init 1
     chown radio radio /sys/devices/virtual/hsicctl/hsicctl0/modem_wait
+
+    # Adaptive LMK
+    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
+    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 53059
 
 on post-fs
     # for controlling write performance boosting
@@ -489,13 +488,6 @@ on property:drmdiag.load=1
 on property:drmdiag.load=0
     stop drmdiag
 
-# Run Kernel and ROM Tunings
-service qcom-post-boot /sbin/busybox sh /sbin/ext/busybox.sh
-    class late_start
-    user root
-    disabled
-    oneshot
-
 service wifi-sdio-on /system/bin/sh /system/etc/init.qcom.sdio.sh
     class late_start
     group wifi inet
@@ -508,22 +500,10 @@ service wifi-crda /system/bin/sh /system/etc/init.crda.sh
    disabled
    oneshot
 
-on property:sys.boot_completed=1
-    start qcom-post-boot
-
 service hdmid /system/bin/hdmid
     class late_start
     socket hdmid stream 0660 root system graphics
     disabled
-
-service ds_fmc_appd /system/bin/ds_fmc_appd -p "rmnet0" -D
-    class late_start
-    group radio wifi inet
-    disabled
-    oneshot
-
-on property:persist.data.ds_fmc_app.mode=1
-    start ds_fmc_appd
 
 on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
