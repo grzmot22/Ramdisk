@@ -15,7 +15,7 @@ debug.atrace.tags.enableflags=0
 #
 # BOOTIMAGE_BUILD_PROPERTIES
 #
-ro.bootimage.build.date=śro, 17 lut 2016, 18:56:26 CET
-ro.bootimage.build.date.utc=1455731786
-ro.bootimage.build.fingerprint=samsung/cm_jflte/jflte:6.0.1/MXB48T/bba70d25c3:userdebug/test-keys
+ro.bootimage.build.date=śro, 17 lut 2016, 22:34:09 CET
+ro.bootimage.build.date.utc=1455744849
+ro.bootimage.build.fingerprint=samsung/cm_jflte/jflte:6.0.1/MXB48T/50e4cc5928:userdebug/test-keys
 persist.sys.usb.config=adb
