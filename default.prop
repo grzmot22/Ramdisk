@@ -15,7 +15,7 @@ debug.atrace.tags.enableflags=0
 #
 # BOOTIMAGE_BUILD_PROPERTIES
 #
-ro.bootimage.build.date=czw, 5 maj 2016, 15:20:20 CEST
-ro.bootimage.build.date.utc=1462454420
-ro.bootimage.build.fingerprint=samsung/cm_jflte/jflte:6.0.1/MOB30J/b083935b30:userdebug/test-keys
+ro.bootimage.build.date=sob, 7 maj 2016, 15:16:56 CEST
+ro.bootimage.build.date.utc=1462627016
+ro.bootimage.build.fingerprint=samsung/cm_jflte/jflte:6.0.1/MOB30J/95acb65eb6:userdebug/test-keys
 persist.sys.usb.config=adb
