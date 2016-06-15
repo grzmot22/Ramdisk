@@ -5,7 +5,9 @@
 BB=/sbin/busybox
 
 # protect init from oom
-echo "-1000" > /proc/1/oom_score_adj;
+if [ -f /system/xbin/su ]; then
+	su -c echo "-1000" > /proc/1/oom_score_adj;
+fi;
 
 # clean dalvik after selinux change.
 if [ -e /data/.alucard/selinux_mode ]; then
@@ -126,7 +128,7 @@ fi;
 # just set numer $RESET_MAGIC + 1 and profiles will be reset one time on next boot with new kernel.
 # incase that ADMIN feel that something wrong with global STweaks config and profiles, then ADMIN can add +1 to CLEAN_ALU_DIR
 # to clean all files on first boot from /data/.alucard/ folder.
-RESET_MAGIC=3;
+RESET_MAGIC=4;
 CLEAN_ALU_DIR=1;
 
 if [ ! -e /data/.alucard/reset_profiles ]; then
@@ -315,35 +317,6 @@ fi;
 	#		start adbd
 	#fi;
 
-	if [ "$gpservicefix" == "yes" ]; then
-		# stop google service and restart it on boot. this remove high cpu load and ram leak!
-		if [ "$($BB pidof com.google.android.gms | wc -l)" -eq "1" ]; then
-			$BB kill "$($BB pidof com.google.android.gms)";
-		fi;
-		if [ "$($BB pidof com.google.android.gms.unstable | wc -l)" -eq "1" ]; then
-			$BB kill "$($BB pidof com.google.android.gms.unstable)";
-		fi;
-		if [ "$($BB pidof com.google.android.gms.persistent | wc -l)" -eq "1" ]; then
-			$BB kill "$($BB pidof com.google.android.gms.persistent)";
-		fi;
-		if [ "$($BB pidof com.google.android.gms.wearable | wc -l)" -eq "1" ]; then
-			$BB kill "$($BB pidof com.google.android.gms.wearable)";
-		fi;
-
-		# Google Services battery drain fixer by Alcolawl@xda
-		# http://forum.xda-developers.com/google-nexus-5/general/script-google-play-services-battery-t3059585/post59563859
-		pm enable com.google.android.gms/.update.SystemUpdateActivity
-		pm enable com.google.android.gms/.update.SystemUpdateService
-		pm enable com.google.android.gms/.update.SystemUpdateService$ActiveReceiver
-		pm enable com.google.android.gms/.update.SystemUpdateService$Receiver
-		pm enable com.google.android.gms/.update.SystemUpdateService$SecretCodeReceiver
-		pm enable com.google.android.gsf/.update.SystemUpdateActivity
-		pm enable com.google.android.gsf/.update.SystemUpdatePanoActivity
-		pm enable com.google.android.gsf/.update.SystemUpdateService
-		pm enable com.google.android.gsf/.update.SystemUpdateService$Receiver
-		pm enable com.google.android.gsf/.update.SystemUpdateService$SecretCodeReceiver
-	fi;
-
 	# Update UKSM in case ROM changed to other setting.
 	if [ "$run" == "on" ]; then
 		echo "1" > /sys/kernel/mm/uksm/run;
@@ -362,3 +335,10 @@ fi;
 
 	$BB mount -o remount,ro /system;
 )&
+
+# Stop LG logging to /data/logger/$FILE we dont need that. draning power.
+setprop persist.service.events.enable 0
+setprop persist.service.main.enable 0
+setprop persist.service.power.enable 0
+setprop persist.service.radio.enable 0
+setprop persist.service.system.enable 0

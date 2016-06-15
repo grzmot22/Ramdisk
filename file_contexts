@@ -331,6 +331,7 @@
 /dev/hsicctl.*                                  u:object_r:hsic_device:s0
 /dev/kgsl-3d0                                   u:object_r:gpu_device:s0
 /dev/mhi_pipe_.*                                u:object_r:mhi_device:s0
+/dev/bhi                                        u:object_r:bhi_device:s0
 /dev/msm_.*                                     u:object_r:audio_device:s0
 /dev/usf1                                       u:object_r:usf_device:s0
 /dev/msm_dsps                                   u:object_r:sensors_device:s0
@@ -419,6 +420,8 @@
 /dev/socket/ims_datad                           u:object_r:ims_socket:s0
 /dev/socket/ims_rtpd                            u:object_r:ims_socket:s0
 /dev/socket/perfd(/.*)?                         u:object_r:mpctl_socket:s0
+/dev/socket/perfd                               u:object_r:mpctl_socket:s0
+/dev/socket/gamed                               u:object_r:gamed_socket:s0
 /dev/socket/qlogd                               u:object_r:qlogd_socket:s0
 /dev/socket/ipacm_log_file                      u:object_r:ipacm_socket:s0
 /dev/socket/dpmd                                u:object_r:dpmd_socket:s0
@@ -459,6 +462,8 @@
 /system/bin/mmi                                 u:object_r:mmi_exec:s0
 /system/bin/mpdecision                          u:object_r:mpdecision_exec:s0
 /system/vendor/bin/perfd                        u:object_r:perfd_exec:s0
+/data/misc/perfd(/.*)?                          u:object_r:mpctl_socket:s0
+/system/vendor/bin/gamed                        u:object_r:gamed_exec:s0
 /system/bin/iop                                 u:object_r:dumpstate_exec:s0
 /system/bin/msm_irqbalance                      u:object_r:msm_irqbalanced_exec:s0
 /system/bin/imsdatadaemon                       u:object_r:ims_exec:s0
@@ -543,7 +548,7 @@
 /system/bin/tbaseLoader                         u:object_r:tbaseLoader_exec:s0
 /system/bin/mcStarter                           u:object_r:mcStarter_exec:s0
 /system/bin/fstman                              u:object_r:fstman_exec:s0
-/system/vendor/bin/mdtp_service                 u:object_r:mdtpdaemon_exec:s0
+/system/vendor/bin/mdtpd                        u:object_r:mdtpdaemon_exec:s0
 
 ###################################
 # sysfs files
@@ -604,7 +609,6 @@
 /data/time(/.*)?                                                    u:object_r:time_data_file:s0
 /data/nfc(/.*)?                                                     u:object_r:nfc_data_file:s0
 /data/system/perfd(/.*)?                                            u:object_r:mpctl_data_file:s0
-/data/misc/perfd(/.*)?                                              u:object_r:mpctl_socket:s0
 /data/misc/iop(/.*)?                                                u:object_r:iop_data_file:s0
 /data/misc/iop/iop                                                  u:object_r:iop_socket:s0
 /data/misc/display(/.*)?                                            u:object_r:display_misc_file:s0
@@ -627,6 +631,7 @@
 /data/misc/audio_pp(/.*)?                                           u:object_r:audio_pp_data_file:s0
 /data/ramdump(/.*)?                                                 u:object_r:ssr_ramdump_data_file:s0
 /data/misc/SelfHost/socket(/.*)?                                    u:object_r:RIDL_socket:s0
+/data/system/swap(/.*)?                                             u:object_r:swap_data_file:s0
 
 ###################################
 # persist files
@@ -638,6 +643,7 @@
 /persist/data(/.*)?                                                 u:object_r:persist_drm_file:s0
 /persist/data/tz(/.*)?                                              u:object_r:persist_drm_file:s0
 /persist/data/sfs(/.*)?                                             u:object_r:persist_drm_file:s0
+/persist/qc_senseid(/.*)?                                           u:object_r:persist_qc_senseid_file:s0
 /persist/usf(/.*)?                                                  u:object_r:persist_usf_file:s0
 /persist/hlos_rfs(/.*)?                                             u:object_r:rfs_shared_hlos_file:s0
 /persist/display(/.*)?                                              u:object_r:persist_display_file:s0
@@ -753,17 +759,28 @@
 /dev/block/platform/msm_sdcc\.1/by-name/ssd     u:object_r:ssd_device:s0
 /dev/block/platform/msm_sdcc\.1/by-name/userdata    u:object_r:userdata_block_device:s0
 
+/dev/block/bootdevice/by-name/m9kefs1           u:object_r:efs_boot_dev:s0
+/dev/block/bootdevice/by-name/m9kefs2           u:object_r:efs_boot_dev:s0
+/dev/block/bootdevice/by-name/m9kefs3           u:object_r:efs_boot_dev:s0
+/dev/block/bootdevice/by-name/m9kefsc           u:object_r:efs_boot_dev:s0
+/dev/gss                                        u:object_r:gss_device:s0
+/dev/pps[0-9]                                   u:object_r:gss_device:s0
+/dev/socket/mpdecision                          u:object_r:mpdecision_socket:s0
+
 ###################################
 # System files
 #
 /system/bin/thermald                            u:object_r:thermal-engine_exec:s0
+/system/bin/thermal-engine                      u:object_r:thermal-engine_exec:s0
 /system/bin/qcks                                u:object_r:mdm_helper_exec:s0
 /system/bin/efks                                u:object_r:mdm_helper_exec:s0
+/system/bin/DR_AP_Service                       u:object_r:location_exec:s0
 
 ###################################
 # Data files
 #
 /data/qcks(/.*)?                                u:object_r:efs_data_file:s0
+/sys/bootkpi/marker_entry                       u:object_r:sys_bootkpi:s0
 #line 1 "device/samsung/jflte/sepolicy/file_contexts"
 /data/.cid.info									u:object_r:wifi_data_file:s0
 /data/.psm.info									u:object_r:wifi_data_file:s0
@@ -814,8 +831,8 @@
 
 #############################
 # performance-related sysfs files (AOSP)
-/sys/devices/system/cpu.*/cpufreq(/.*)? --  u:object_r:sysfs_devices_system_cpu:s0
-/sys/block/mmcblk.*/queue/scheduler  --    u:object_r:sysfs_devices_system_iosched:s0
+/sys/devices/system/cpu.*/cpufreq(/.*)?   u:object_r:sysfs_devices_system_cpu:s0
+/sys/block/mmcblk.*/queue/scheduler       u:object_r:sysfs_devices_system_iosched:s0
 
 /data/hostapd(/.*)?         u:object_r:wifi_data_file:s0
 

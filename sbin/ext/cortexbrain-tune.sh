@@ -146,10 +146,6 @@ CPU_HOTPLUG_TWEAKS()
 {
 	local state="$1";
 
-	if [ "$(pgrep -f "/system/bin/thermal-engine" | wc -l)" -eq "1" ]; then
-		$BB renice -n -20 -p "$(pgrep -f "/system/bin/thermal-engine")";
-	fi;
-
 	if [ "$cpuhotplugging" -eq "1" ]; then
 		if [ -e /system/bin/mpdecision ]; then
 			if [ "$(pgrep -f "/system/bin/mpdecision" | wc -l)" -eq "0" ]; then
@@ -172,7 +168,7 @@ CPU_HOTPLUG_TWEAKS()
 				/system/bin/stop mpdecision
 				/system/bin/start mpdecision
 				$BB renice -n -20 -p "$(pgrep -f "/system/bin/start mpdecision")";
-				echo "20" > /sys/devices/system/cpu/cpu0/rq-stats/run_queue_poll_ms;
+				echo "10" > /sys/devices/system/cpu/cpu0/rq-stats/run_queue_poll_ms;
 			else
 				# Some !Stupid APP! changed mpdecision name, not my problem. use msm hotplug!
 				echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable;
@@ -194,6 +190,9 @@ CPU_HOTPLUG_TWEAKS()
 		if [ "$(cat /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable)" -eq "1" ]; then
 			echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable;
 		fi;
+		if [ -e /system/bin/mpdecision ]; then
+			/system/bin/stop mpdecision
+		fi;
 
 		# tune-settings
 		if [ "$state" == "tune" ]; then
@@ -214,6 +213,9 @@ CPU_HOTPLUG_TWEAKS()
 		fi;
 		if [ "$(cat /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable)" -eq "1" ]; then
 			echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable;
+		fi;
+		if [ -e /system/bin/mpdecision ]; then
+			/system/bin/stop mpdecision
 		fi;
 
 		# tune-settings
@@ -262,6 +264,9 @@ CPU_HOTPLUG_TWEAKS()
 		if [ "$(cat /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable)" -eq "1" ]; then
 			echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable;
 		fi;
+		if [ -e /system/bin/mpdecision ]; then
+			/system/bin/stop mpdecision
+		fi;
 
 		# tune-settings
 		if [ "$state" == "tune" ]; then
@@ -290,6 +295,9 @@ FORCE_CPUS_ONOFF()
 		if [ "$(cat /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable)" -eq "1" ]; then
 			echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable;
 		fi;
+		if [ -e /system/bin/mpdecision ]; then
+			/system/bin/stop mpdecision
+		fi;
 		echo "1" > /sys/devices/system/cpu/cpu1/online;
 		echo "1" > /sys/devices/system/cpu/cpu2/online;
 		echo "1" > /sys/devices/system/cpu/cpu3/online;
@@ -305,6 +313,9 @@ FORCE_CPUS_ONOFF()
 		fi;
 		if [ "$(cat /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable)" -eq "1" ]; then
 			echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable;
+		fi;
+		if [ -e /system/bin/mpdecision ]; then
+			/system/bin/stop mpdecision
 		fi;
 		echo "0" > /sys/devices/system/cpu/cpu1/online;
 		echo "0" > /sys/devices/system/cpu/cpu2/online;
