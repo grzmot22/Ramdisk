@@ -51,6 +51,9 @@ on boot
 
     # Start BSOD Killer
     start bsod_killer
+    
+    # Start LEDify
+    start ledify
 
 on post-fs-data
     mkdir /data/tombstones 0771 system system
@@ -317,6 +320,13 @@ service time_daemon /system/bin/time_daemon
 
 # BSOD Killer
 service bsod_killer /system/bin/bsod_killer
+    user root
+    group shell
+    disabled
+    oneshot
+
+# LEDify
+service ledify /system/bin/ledify
     user root
     group shell
     disabled
