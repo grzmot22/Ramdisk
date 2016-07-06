@@ -114,9 +114,6 @@ on enable-low-power
     write /sys/devices/system/cpu/cpufreq/interactive/max_freq_hysteresis 119000
     write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 30000
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor ondemand
-
-<<<<<<< HEAD
-=======
     write /sys/module/cpu_boost/parameters/boost_ms 20
     write /sys/module/cpu_boost/parameters/input_boost_ms 40
     write /sys/module/cpu_boost/parameters/sync_threshold 1242000
@@ -124,7 +121,6 @@ on enable-low-power
 
     write /dev/cpuctl/cpu.notify_on_migrate 1
 
->>>>>>> c22b2e3... Updates from 20160706 build
 on property:init.svc.recovery=running
     trigger enable-low-power
 
