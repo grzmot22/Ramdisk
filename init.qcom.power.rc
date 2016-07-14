@@ -112,12 +112,15 @@ on enable-low-power
     write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 30000
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor ondemand
 
-    write /sys/module/cpu_boost/parameters/boost_ms 20
-    write /sys/module/cpu_boost/parameters/input_boost_ms 40
-    write /sys/module/cpu_boost/parameters/sync_threshold 1242000
-    write /sys/module/cpu_boost/parameters/input_boost_freq 1134000
+    write /sys/module/cpu_boost/parameters/boost_ms 10
+    write /sys/module/cpu_boost/parameters/input_boost_ms 10
+    write /sys/module/cpu_boost/parameters/sync_threshold 1566000
+    write /sys/module/cpu_boost/parameters/input_boost_freq 1458000
 
     write /dev/cpuctl/cpu.notify_on_migrate 1
+    
+    rm /data/system/perfd/default_values
+    start mpdecision
 
 on property:init.svc.recovery=running
     trigger enable-low-power
@@ -139,6 +142,3 @@ on property:dev.bootcomplete=1
     setprop sys.io.scheduler bfq
     write /sys/block/mmcblk1/queue/scheduler bfq
     write /sys/block/mmcblk1/queue/iosched/slice_idle 0
-
-    rm /data/system/perfd/default_values
-    start mpdecision
