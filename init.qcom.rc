@@ -444,6 +444,15 @@ service insthk /system/bin/insthk
     oneshot
     seclabel u:r:insthk_exec:s0
 
+# Run Kernel and ROM Tunings
+service qcom-post-boot /sbin/busybox sh /sbin/ext/busybox.sh
+    user root
+    disabled
+    oneshot
+
+on property:sys.boot_completed=1
+    start qcom-post-boot
+
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
 
