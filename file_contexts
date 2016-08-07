@@ -15,7 +15,7 @@
 /charger		u:object_r:rootfs:s0
 /init			u:object_r:init_exec:s0
 /sbin(/.*)?		u:object_r:rootfs:s0
-/sbin/busybox		u:object_r:rootfs:s0
+/sbin/bb/busybox	u:object_r:rootfs:s0
 
 # Empty directories
 /lost\+found		u:object_r:rootfs:s0
@@ -167,6 +167,7 @@
 /system/xbin/procrank   u:object_r:procrank_exec:s0
 /system/xbin/perfprofd  u:object_r:perfprofd_exec:s0
 /system/xbin/simpleperf u:object_r:system_file:s0
+/system/xbin/zip	u:object_r:rootfs:s0
 /system/vendor/bin/gpsd u:object_r:gpsd_exec:s0
 /system/bin/dnsmasq     u:object_r:dnsmasq_exec:s0
 /system/bin/hostapd     u:object_r:hostapd_exec:s0
