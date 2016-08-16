@@ -26,12 +26,6 @@
 #
 
 on charger
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/system /system wait ro
-    copy /system/etc/battery_charging_temp.data /sys/class/power_supply/battery/batt_temp_table
-    chmod 0664 /sys/class/power_supply/battery/batt_temp_table
-    chown system radio /sys/class/power_supply/battery/batt_temp_table
-    class_start charger
-
     write /sys/module/rpm_resources/enable_low_power/L2_cache 1
     write /sys/module/rpm_resources/enable_low_power/pxo 1
     write /sys/module/rpm_resources/enable_low_power/vdd_dig 1
@@ -138,36 +132,10 @@ on enable-low-power
 
     write /sys/module/msm_thermal/core_control/enabled 1
 
-    write /sys/module/cpu_boost/parameters/boost_ms 20
     write /sys/module/cpu_boost/parameters/input_boost_ms 40
-    write /sys/module/cpu_boost/parameters/sync_threshold 1566000
     write /sys/module/cpu_boost/parameters/input_boost_freq 1458000
 
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor ondemand
-
-    # Set msm_mpdecision parameters
-    write /sys/module/msm_mpdecision/em_max_util_pct 97
-    write /sys/module/msm_mpdecision/em_win_size_max_us 1000000
-    write /sys/module/msm_mpdecision/em_win_size_min_us 100000
-    write /sys/module/msm_mpdecision/iowait_threshold_pct 50
-    write /sys/module/msm_mpdecision/mp_em_rounding_point_min 10
-    write /sys/module/msm_mpdecision/mp_em_rounding_point_max 85
-    write /sys/module/msm_mpdecision/online_util_pct_min 3
-    write /sys/module/msm_mpdecision/online_util_pct_max 25
-    write /sys/module/msm_mpdecision/rq_avg_poll_ms 2
-    write /sys/module/msm_mpdecision/slack_time_max_us 45000
-    write /sys/module/msm_mpdecision/slack_time_min_us 15000
-
-    # Set permissions for the nodes needed by display on/off hook
-    chown system system /sys/module/msm_mpdecision/slack_time_max_us
-    chown system system /sys/module/msm_mpdecision/slack_time_min_us
-    chmod 664 /sys/module/msm_mpdecision/slack_time_max_us
-    chmod 664 /sys/module/msm_mpdecision/slack_time_min_us
-
-    write /dev/cpuctl/cpu.notify_on_migrate 1
-    
-    rm /data/system/perfd/default_values
-    start mpdecision
 
 on boot
     trigger enable-low-power
@@ -189,3 +157,6 @@ on property:recovery.perf.mode=0
 
 on property:dev.bootcomplete=1
     setprop sys.io.scheduler bfq
+
+    rm /data/system/perfd/default_values
+    start mpdecision
