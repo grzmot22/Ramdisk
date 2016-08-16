@@ -2,7 +2,8 @@
 # ADDITIONAL_DEFAULT_PROPERTIES
 #
 ro.adb.secure=1
-ro.secure=0
+ro.secure=1
+security.perf_harden=1
 ro.allow.mock.location=0
 ro.debuggable=1
 ro.zygote=zygote32
@@ -15,7 +16,7 @@ debug.atrace.tags.enableflags=0
 #
 # BOOTIMAGE_BUILD_PROPERTIES
 #
-ro.bootimage.build.date=Sun Jul 24 21:27:16 CEST 2016
-ro.bootimage.build.date.utc=1469388436
-ro.bootimage.build.fingerprint=samsung/cm_jflte/jflte:6.0.1/MOB30R/359c72b379:userdebug/test-keys
+ro.bootimage.build.date=Mon Aug 15 20:24:39 CEST 2016
+ro.bootimage.build.date.utc=1471285479
+ro.bootimage.build.fingerprint=samsung/cm_jflte/jflte:6.0.1/MOB30Z/7ceb336b35:userdebug/test-keys
 persist.sys.usb.config=none

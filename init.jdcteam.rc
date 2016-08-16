@@ -6,9 +6,6 @@ on fs
      start emmc_trim
 
 on boot
-     # Start BSOD Killer
-     start bsod_killer
-
      # Start LEDify
      start ledify
 
@@ -19,14 +16,9 @@ service emmc_trim /system/bin/emmc_trim
      disabled
      oneshot
 
-# BSOD Killer
-service bsod_killer /system/bin/bsod_killer
-     user root
-     group shell
-     oneshot
-
 # LEDify
 service ledify /system/bin/ledify
      user root
      group shell
+     disabled
      oneshot
