@@ -13,7 +13,6 @@ import /init.trace.rc
 # Include CM's extra init file
 import /init.cm.rc
 # Include JDCTeam's extra init file
-
 import /init.jdcteam.rc
 
 on early-init
