@@ -126,6 +126,9 @@ on enable-low-power
     write /sys/module/cpu_boost/parameters/input_boost_freq 1458000
 
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor ondemand
+    
+    write /sys/devices/platform/msm_sdcc.3/idle_timeout 10
+
 
     write /sys/devices/platform/msm_sdcc.3/idle_timeout 10
 
