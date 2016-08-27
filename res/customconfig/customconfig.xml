@@ -776,7 +776,7 @@
 			<spinnerItem name="MMC Power Save" value="power_save"/> 
 		</spinner>
 
-		<spinner description="This will set the default IO scheduler for internal sdcard. A reboot should be performed when this value is changed. (Default: BFQ)" name="Default IO Scheduler Int." action="iosched internal /sys/block/mmcblk0/queue/scheduler">
+		<spinner description="This will set the default IO scheduler for internal sdcard. A reboot should be performed when this value is changed. (Default: ZEN)" name="Default IO Scheduler Int." action="iosched internal /sys/block/mmcblk0/queue/scheduler">
 			<spinnerItem name="BFQ" value="bfq"/>
 			<spinnerItem name="CFQ" value="cfq"/> 
 			<spinnerItem name="DEADLINE" value="deadline"/> 
