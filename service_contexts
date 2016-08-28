@@ -147,7 +147,7 @@ wifiscanner                               u:object_r:wifiscanner_service:s0
 wifi                                      u:object_r:wifi_service:s0
 window                                    u:object_r:window_service:s0
 *                                         u:object_r:default_android_service:s0
-#line 1 "/media/b--b/Android/N/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+#line 1 "/run/media/grzmot22/54c9be22-1b9b-4d0b-ba26-f028f7c38c28/aosp/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
 
 #line 1 "device/qcom/sepolicy/common/service_contexts"
 android.apps.IQfpService                       u:object_r:iqfp_service:s0
@@ -179,7 +179,7 @@ seempservice                                   u:object_r:seemp_service:s0
 mdtp                                           u:object_r:mdtpdaemon_service:s0
 qtitetherservice                               u:object_r:qtitetherservices_service:s0
 com.qualcomm.qti.seemp.health                  u:object_r:seemp_health_daemon_service:s0
-#line 1 "/media/b--b/Android/N/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+#line 1 "/run/media/grzmot22/54c9be22-1b9b-4d0b-ba26-f028f7c38c28/aosp/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
 
 #line 1 "device/qcom/sepolicy/test/service_contexts"
 # Copyright (c) 2015, The Linux Foundation. All rights reserved.
@@ -212,11 +212,11 @@ com.qualcomm.qti.seemp.health                  u:object_r:seemp_health_daemon_se
 com.qualcomm.qti.auth.securesampleauthdaemon   u:object_r:fidotest_service:s0
 com.qualcomm.qti.qseeproxysample               u:object_r:qseeproxysample_service:s0
 
-#line 1 "/media/b--b/Android/N/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+#line 1 "/run/media/grzmot22/54c9be22-1b9b-4d0b-ba26-f028f7c38c28/aosp/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
 
 #line 1 "vendor/aosp/sepolicy/service_contexts"
 #edgegestureservice                        u:object_r:edge_gesture_service:s0
 #torch                                     u:object_r:torch_service:s0
 #killswitch                                u:object_r:kill_switch_service:s0
-#line 1 "/media/b--b/Android/N/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+#line 1 "/run/media/grzmot22/54c9be22-1b9b-4d0b-ba26-f028f7c38c28/aosp/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
 
