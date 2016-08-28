@@ -93,7 +93,7 @@ config.                 u:object_r:config_prop:s0
 ro.config.              u:object_r:config_prop:s0
 dalvik.                 u:object_r:dalvik_prop:s0
 ro.dalvik.              u:object_r:dalvik_prop:s0
-#line 1 "/media/b--b/Android/N/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+#line 1 "/run/media/grzmot22/54c9be22-1b9b-4d0b-ba26-f028f7c38c28/aosp/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
 
 #line 1 "device/qcom/sepolicy/common/property_contexts"
 wc_transport.              u:object_r:bluetooth_prop:s0
@@ -142,7 +142,7 @@ debug.sf.nobootanimation   u:object_r:boot_animation_prop:s0
 radio.noril                u:object_r:radio_noril_prop:s0
 debug.gralloc.             u:object_r:debug_gralloc_prop:s0
 persist.net.doxlat         u:object_r:xlat_prop:s0
-#line 1 "/media/b--b/Android/N/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+#line 1 "/run/media/grzmot22/54c9be22-1b9b-4d0b-ba26-f028f7c38c28/aosp/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
 
 #line 1 "device/qcom/sepolicy/msm8960/property_contexts"
 # Copyright (c) 2015, The Linux Foundation. All rights reserved.
@@ -177,21 +177,21 @@ ctl.thermal-engine             u:object_r:ctl_thermal-engine_prop:s0
 persist.nativehmi.exit         u:object_r:ctl_bootanim_prop:s0
 nativehmi.appname              u:object_r:ctl_bootanim_prop:s0
 sys.mediaserver.ready          u:object_r:audio_prop:s0
-#line 1 "/media/b--b/Android/N/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+#line 1 "/run/media/grzmot22/54c9be22-1b9b-4d0b-ba26-f028f7c38c28/aosp/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
 
 #line 1 "vendor/aosp/sepolicy/qcom/property_contexts"
 persist.dbg                   u:object_r:radio_prop:s0
 persist.data                  u:object_r:radio_prop:s0
-#line 1 "/media/b--b/Android/N/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+#line 1 "/run/media/grzmot22/54c9be22-1b9b-4d0b-ba26-f028f7c38c28/aosp/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
 
 #line 1 "device/samsung/jflte/sepolicy/property_contexts"
 persist.sys.camera.preview	u:object_r:camera_prop:s0
 sys.qseecomd.enable		u:object_r:qseecomd_prop:s0
-#line 1 "/media/b--b/Android/N/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+#line 1 "/run/media/grzmot22/54c9be22-1b9b-4d0b-ba26-f028f7c38c28/aosp/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
 
 #line 1 "vendor/aosp/sepolicy/property_contexts"
 #service.adb.tcp.port          u:object_r:adbtcp_prop:s0
 recovery.perf.mode            u:object_r:recovery_prop:s0
 adb.secure                    u:object_r:recovery_prop:s0
-#line 1 "/media/b--b/Android/N/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+#line 1 "/run/media/grzmot22/54c9be22-1b9b-4d0b-ba26-f028f7c38c28/aosp/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
 
