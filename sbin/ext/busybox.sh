@@ -46,7 +46,7 @@ if [ -e /system/wget/wget ]; then
 	$BB chmod 755 /system/wget/wget;
 	$BB ln -s /system/wget/wget /system/xbin/wget;
 fi;
-chmod 06755 /bin/bb/busybox;
+chmod 06755 /sbin/bb/busybox;
 if [ -e /system/xbin/su ]; then
 	$BB chmod 06755 /system/xbin/su;
 fi;
