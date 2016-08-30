@@ -204,7 +204,7 @@
 			<spinnerItem name="384.000 kHz" value="384000"/> 
 		</spinner>
 
-		<spinner description="Maximum ON CALL CPUs speed. (Default: 1350.000 kHz). When phone is on call and suspended." name="scaling_max_oncall_freq" action="genericfreq /sys/kernel/cpufreq_limit_manager/scaling_max_oncall_freq">
+		<spinner description="Maximum ON CALL CPUs speed. (Default: 1242.000 kHz). When phone is on call and suspended." name="scaling_max_oncall_freq" action="genericfreq /sys/kernel/cpufreq_limit_manager/scaling_max_oncall_freq">
 			<spinnerItem name="1.890.000 kHz" value="1890000"/> 
 			<spinnerItem name="1.782.000 kHz" value="1782000"/> 
 			<spinnerItem name="1.674.000 kHz" value="1674000"/> 
@@ -1085,6 +1085,11 @@
 		<spinner description="Control to enable or disable logcat, logcat used to debug ROM services and apps, if you never used it, then keep it OFF, you get more battery and less CPU usage on idle." name="Logcat ON/OFF" action="logger">
 			<spinnerItem name="Logcat OFF" value="0"/> 
 			<spinnerItem name="Logcat ON" value="1"/> 
+		</spinner>
+		
+		<spinner description="[EXPERIMENTAL]Re-enables Google Play Service.It is supposed to help on battery saving [EXPERIMENTAL]" name="enable on boot" action="generic_cortex /tmp/gpservicefix">
+			<spinnerItem name="on" value="yes"/> 
+			<spinnerItem name="off" value="no"/> 
 		</spinner>
 
 	</settingsPane>
