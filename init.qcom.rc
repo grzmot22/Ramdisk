@@ -461,18 +461,26 @@ service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
     user root
     oneshot
 
-service bt-dun /system/bin/sh /system/etc/init.qcom.btdun.sh
-    class late_start
-    user bluetooth
-    group bluetooth net_bt_admin inet
+
+# Run Kernel and ROM Tunings
+service qcom-post-boot /sbin/bb/busybox sh /sbin/ext/busybox.sh
+    user root
+    seclabel u:r:init:s0
     disabled
     oneshot
 
-service bt-sap /system/bin/sapd 15
-    user bluetooth
-    group bluetooth net_bt_admin
+# Install busybox
+service kernel-bb /sbin/ext/bb.sh
     class late_start
-    disabled
+    user root
+    seclabel u:r:init:s0
+    oneshot
+
+# LEDify
+service ledify /system/bin/ledify
+    class late_start
+    user root
+    seclabel u:r:init:s0
     oneshot
 
 service bridgemgrd /system/bin/bridgemgrd
