@@ -273,20 +273,6 @@ OPEN_RW;
 # Fix critical perms again after init.d mess
 CRITICAL_PERM_FIX;
 
-# Temporary GooglePlayService fix.
-if [ "$gpservicefix" == "yes" ]; then
-	$BB pm enable com.google.android.gms/.update.SystemUpdateActivity
-	$BB pm enable com.google.android.gms/.update.SystemUpdateService
-	$BB pm enable com.google.android.gms/.update.SystemUpdateService$ActiveReceiver
-	$BB pm enable com.google.android.gms/.update.SystemUpdateService$Receiver
-	$BB pm enable com.google.android.gms/.update.SystemUpdateService$SecretCodeReceiver
-	$BB pm enable com.google.android.gsf/.update.SystemUpdateActivity
-	$BB pm enable com.google.android.gsf/.update.SystemUpdatePanoActivity
-	$BB pm enable com.google.android.gsf/.update.SystemUpdateService
-	$BB pm enable com.google.android.gsf/.update.SystemUpdateService$Receiver
-	$BB pm enable com.google.android.gsf/.update.SystemUpdateService$SecretCodeReceiver
-fi;
-
 if [ "$stweaks_boot_control" == "yes" ]; then
 	$BB sh /sbin/ext/cortexbrain-tune.sh apply_cpu update > /dev/null;
 	# Load Custom Modules

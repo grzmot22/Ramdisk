@@ -1087,11 +1087,6 @@
 			<spinnerItem name="Logcat ON" value="1"/> 
 		</spinner>
 		
-		<spinner description="[EXPERIMENTAL]Re-enables Google Play Service.It is supposed to help on battery saving [EXPERIMENTAL]" name="enable on boot" action="generic_cortex /tmp/gpservicefix">
-			<spinnerItem name="on" value="yes"/> 
-			<spinnerItem name="off" value="no"/> 
-		</spinner>
-
 	</settingsPane>
 
 	<settingsPane description="WIFI Settings" name="WIFI">
