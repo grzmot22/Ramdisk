@@ -1022,7 +1022,7 @@
 
 	<settingsPane description="AC and USB charging control" name="AC and USB charging control">
 
-		<spinner description="This will force fast charging! (Disabled: Disabled | Use stock AC level on USB(Max 1000mA) | Use custom mA on AC and USB) (Default: Disabled)" name="Force Fast Charging" action="generic /sys/kernel/fast_charge/force_fast_charge">
+		<spinner description="This will force fast charging! (Disabled: Disabled | Use stock AC level on USB(Max 1000mA) | Use custom mA on AC and USB) (Default: Use stock AC level on USB(Max 1000mA)" name="Force Fast Charging" action="generic /sys/kernel/fast_charge/force_fast_charge">
 			<spinnerItem name="Disabled" value="0"/>
 			<spinnerItem name="Use stock AC level on USB(Max 1000mA)" value="1"/>
 			<spinnerItem name="Use custom mA on AC and USB" value="2"/>
