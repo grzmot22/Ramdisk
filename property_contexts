@@ -93,7 +93,7 @@ config.                 u:object_r:config_prop:s0
 ro.config.              u:object_r:config_prop:s0
 dalvik.                 u:object_r:dalvik_prop:s0
 ro.dalvik.              u:object_r:dalvik_prop:s0
-#line 1 "/run/media/grzmot22/1a3416c0-dfe4-4a1a-962a-6b924be000f1/aosp/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+#line 1 "/run/media/grzmot22/19a5941b-eda7-4083-907f-7e9851bafe37/home/grzmot22/aosp/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
 
 #line 1 "device/qcom/sepolicy/common/property_contexts"
 # Copyright (c) 2015-2016 Dolby Laboratories, Inc. All rights reserved.
@@ -177,25 +177,25 @@ ro.alarm_handled           u:object_r:alarm_handled_prop:s0
 ro.alarm_instance          u:object_r:alarm_instance_prop:s0
 #HWUI Property
 ro.hwui.texture_cache_size u:object_r:hwui_prop:s0
-#line 1 "/run/media/grzmot22/1a3416c0-dfe4-4a1a-962a-6b924be000f1/aosp/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+#line 1 "/run/media/grzmot22/19a5941b-eda7-4083-907f-7e9851bafe37/home/grzmot22/aosp/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
 
 #line 1 "device/qcom/sepolicy/msm8960/property_contexts"
 ctl.thermal-engine             u:object_r:ctl_thermal-engine_prop:s0
-#line 1 "/run/media/grzmot22/1a3416c0-dfe4-4a1a-962a-6b924be000f1/aosp/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+#line 1 "/run/media/grzmot22/19a5941b-eda7-4083-907f-7e9851bafe37/home/grzmot22/aosp/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
 
 #line 1 "vendor/aosp/sepolicy/qcom/property_contexts"
 persist.dbg                   u:object_r:radio_prop:s0
 persist.data                  u:object_r:radio_prop:s0
-#line 1 "/run/media/grzmot22/1a3416c0-dfe4-4a1a-962a-6b924be000f1/aosp/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+#line 1 "/run/media/grzmot22/19a5941b-eda7-4083-907f-7e9851bafe37/home/grzmot22/aosp/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
 
 #line 1 "device/samsung/jflte/sepolicy/property_contexts"
 persist.sys.camera.preview	u:object_r:camera_prop:s0
 sys.qseecomd.enable		u:object_r:qseecomd_prop:s0
-#line 1 "/run/media/grzmot22/1a3416c0-dfe4-4a1a-962a-6b924be000f1/aosp/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+#line 1 "/run/media/grzmot22/19a5941b-eda7-4083-907f-7e9851bafe37/home/grzmot22/aosp/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
 
 #line 1 "vendor/aosp/sepolicy/property_contexts"
 #service.adb.tcp.port          u:object_r:adbtcp_prop:s0
 recovery.perf.mode            u:object_r:recovery_prop:s0
 adb.secure                    u:object_r:recovery_prop:s0
-#line 1 "/run/media/grzmot22/1a3416c0-dfe4-4a1a-962a-6b924be000f1/aosp/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+#line 1 "/run/media/grzmot22/19a5941b-eda7-4083-907f-7e9851bafe37/home/grzmot22/aosp/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
 
