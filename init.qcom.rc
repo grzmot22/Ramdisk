@@ -422,14 +422,6 @@ on property:bluetooth.dun.status=stopped
     # RIL fast dormancy
     chown system radio /sys/class/sec/bamdmux/waketime
 
-
-# Run Kernel and ROM Tunings
-service qcom-post-boot /sbin/bb/busybox sh /sbin/ext/busybox.sh
-    user root
-    group root
-    disabled
-    oneshot
-
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user camera
