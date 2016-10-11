@@ -28,7 +28,7 @@ debug.atrace.tags.enableflags=0
 #
 # BOOTIMAGE_BUILD_PROPERTIES
 #
-ro.bootimage.build.date=Τρι 11 Οκτ 2016 08:56:16 μμ EEST
-ro.bootimage.build.date.utc=1476208576
-ro.bootimage.build.fingerprint=samsung/cm_jflte/jflte:7.0/NBD90Z/f81ad72feb:userdebug/test-keys
+ro.bootimage.build.date=Τρι 11 Οκτ 2016 11:29:29 μμ EEST
+ro.bootimage.build.date.utc=1476217769
+ro.bootimage.build.fingerprint=samsung/cm_jflte/jflte:7.0/NBD90Z/3a4718ce49:userdebug/test-keys
 persist.sys.usb.config=adb
