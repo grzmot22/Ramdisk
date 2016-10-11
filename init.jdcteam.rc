@@ -18,7 +18,9 @@ service emmc_trim /system/bin/emmc_trim
 
 # LEDify
 service ledify /system/bin/ledify
+     class late_start
      user root
      group shell
      disabled
+     seclabel u:r:init:s0
      oneshot

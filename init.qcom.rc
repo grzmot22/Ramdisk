@@ -465,10 +465,6 @@ service kernel-bb /sbin/ext/bb.sh
     seclabel u:r:init:s0
     oneshot
 
-# LEDify
-service ledify /system/bin/ledify
-    class late_start
-
 on property:sys.qseecomd.enable=true
     start insthk
 
