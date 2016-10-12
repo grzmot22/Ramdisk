@@ -146,6 +146,10 @@
 /dev/ttyGS0               0660   system     system
 /dev/i2c-5                0660   media       media
 
+# Bluetooth
+/dev/btlock               0660   bluetooth  bluetooth
+/dev/ttyHS0               0660   bluetooth  net_bt_stack
+
 # DVB devices
 /dev/dvb/adapter0/demux*  0444   media       media
 /dev/dvb/adapter0/dvr*    0664   media       media
@@ -155,6 +159,9 @@
 /sys/devices/i2c-12/12-*  pollrate_ms 0664 system system
 /sys/devices/i2c-12/12-*  enable  0664 system system
 /sys/devices/i2c-12/12-*  poll_delay 0664 system system
+
+# NFC
+/dev/bcm2079x             0660   nfc        nfc
 
 # wlan
 /dev/wcnss_wlan           0660   system     system
