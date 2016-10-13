@@ -324,6 +324,10 @@ on boot
     chown system system /sys/kernel/ipv4/tcp_rmem_def
     chown system system /sys/kernel/ipv4/tcp_rmem_max
     
+    # Start kickstart if mdm is detected
+on property:ro.baseband=mdm
+    start kickstart
+
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user camera
