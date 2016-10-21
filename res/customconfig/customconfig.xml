@@ -168,7 +168,7 @@
 
 		<checkbox description="Enable or disable Power-efficient work queues will help to reduce power consumption at the cost of slight performance overhead. By enabling this, PE work queues are used for unbound scheduled work to save load on sibling CPU cores and queuing work on CPU 0." name="Power-efficient work queues"  action="generic01 /sys/module/workqueue/parameters/power_efficient" label="Power-efficient work queues"/>
 
-		<spinner description="Maximum CPUs speed while using GPS. (Default: 1890.000 kHz)." name="scaling_max_gps_freq" action="genericfreq /sys/kernel/cpufreq_limit_manager/scaling_max_gps_freq">
+		<spinner description="Maximum CPUs speed while using GPS. (Default: 1242.000 kHz)." name="scaling_max_gps_freq" action="genericfreq /sys/kernel/cpufreq_limit_manager/scaling_max_gps_freq">
 			<spinnerItem name="1.890.000 kHz" value="1890000"/> 
 			<spinnerItem name="1.782.000 kHz" value="1782000"/> 
 			<spinnerItem name="1.674.000 kHz" value="1674000"/> 
@@ -204,7 +204,7 @@
 			<spinnerItem name="384.000 kHz" value="384000"/> 
 		</spinner>
 
-		<spinner description="Maximum ON CALL CPUs speed. (Default: 1242.000 kHz). When phone is on call and suspended." name="scaling_max_oncall_freq" action="genericfreq /sys/kernel/cpufreq_limit_manager/scaling_max_oncall_freq">
+		<spinner description="Maximum ON CALL CPUs speed. (Default: 1350.000 kHz). When phone is on call and suspended." name="scaling_max_oncall_freq" action="genericfreq /sys/kernel/cpufreq_limit_manager/scaling_max_oncall_freq">
 			<spinnerItem name="1.890.000 kHz" value="1890000"/> 
 			<spinnerItem name="1.782.000 kHz" value="1782000"/> 
 			<spinnerItem name="1.674.000 kHz" value="1674000"/> 
@@ -294,7 +294,6 @@
 			<spinnerItem name="alucard" value="alucard"/>
 			<spinnerItem name="conservative" value="conservative"/> 
 			<spinnerItem name="darkness" value="darkness"/>
-			<spinnerItem name="intelliactive" value="intelliactive"/>
 			<spinnerItem name="interactive" value="interactive"/> 
 			<spinnerItem name="nightmare" value="nightmare"/> 
 			<spinnerItem name="ondemand" value="ondemand"/> 
@@ -304,7 +303,6 @@
 			<spinnerItem name="alucard" value="alucard"/>
 			<spinnerItem name="conservative" value="conservative"/> 
 			<spinnerItem name="darkness" value="darkness"/>
-			<spinnerItem name="intelliactive" value="intelliactive"/>
 			<spinnerItem name="interactive" value="interactive"/> 
 			<spinnerItem name="nightmare" value="nightmare"/> 
 			<spinnerItem name="ondemand" value="ondemand"/> 
@@ -314,7 +312,6 @@
 			<spinnerItem name="alucard" value="alucard"/>
 			<spinnerItem name="conservative" value="conservative"/> 
 			<spinnerItem name="darkness" value="darkness"/>
-			<spinnerItem name="intelliactive" value="intelliactive"/>
 			<spinnerItem name="interactive" value="interactive"/>
 			<spinnerItem name="nightmare" value="nightmare"/> 
 			<spinnerItem name="ondemand" value="ondemand"/> 
@@ -324,7 +321,6 @@
 			<spinnerItem name="alucard" value="alucard"/>
 			<spinnerItem name="conservative" value="conservative"/> 
 			<spinnerItem name="darkness" value="darkness"/>
-			<spinnerItem name="intelliactive" value="intelliactive"/>
 			<spinnerItem name="interactive" value="interactive"/> 
 			<spinnerItem name="nightmare" value="nightmare"/> 
 			<spinnerItem name="ondemand" value="ondemand"/> 
@@ -698,7 +694,6 @@
 		<spinner description="This will set GPU governor. (Default: ondemand)" name="GPU Governor" action="generic /sys/devices/platform/kgsl-3d0.0/kgsl/kgsl-3d0/pwrscale/trustzone/governor">
 			<spinnerItem name="ondemand" value="ondemand"/>
 			<spinnerItem name="performance" value="performance"/>
-			<spinnerItem name="simple" value="simple"/> 
 		</spinner>
 
 		<spinner description="This it is the max value of GPU frequency. (Default: 450.000 kHz)" name="GPU Max Frequency" action="generic /sys/devices/platform/kgsl-3d0.0/kgsl/kgsl-3d0/max_pwrlevel">
@@ -776,7 +771,7 @@
 			<spinnerItem name="MMC Power Save" value="power_save"/> 
 		</spinner>
 
-		<spinner description="This will set the default IO scheduler for internal sdcard. A reboot should be performed when this value is changed. (Default: ZEN)" name="Default IO Scheduler Int." action="iosched internal /sys/block/mmcblk0/queue/scheduler">
+		<spinner description="This will set the default IO scheduler for internal sdcard. A reboot should be performed when this value is changed. (Default: BFQ )" name="Default IO Scheduler Int." action="iosched internal /sys/block/mmcblk0/queue/scheduler">
 			<spinnerItem name="BFQ" value="bfq"/>
 			<spinnerItem name="CFQ" value="cfq"/> 
 			<spinnerItem name="DEADLINE" value="deadline"/> 
@@ -787,7 +782,7 @@
 			<spinnerItem name="ZEN" value="zen"/> 
 		</spinner>
 
-		<spinner description="This will set the default IO scheduler for external sdcard. A reboot should be performed when this value is changed. (Default: ZEN)" name="Default IO Scheduler Ext." action="iosched sd /sys/block/mmcblk1/queue/scheduler">
+		<spinner description="This will set the default IO scheduler for external sdcard. A reboot should be performed when this value is changed. (Default: BFQ )" name="Default IO Scheduler Ext." action="iosched sd /sys/block/mmcblk1/queue/scheduler">
 			<spinnerItem name="BFQ" value="bfq"/>
 			<spinnerItem name="CFQ" value="cfq"/> 
 			<spinnerItem name="DEADLINE" value="deadline"/> 
