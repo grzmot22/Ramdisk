@@ -76,10 +76,14 @@ on init
     mount tmpfs tmpfs /mnt mode=0755,uid=0,gid=1000
     restorecon_recursive /mnt
 
-    mount configfs none /config
-    chmod 0775 /config/sdcardfs
-    chown system package_info /config/sdcardfs
+    # Create mountpoint so Dalvik can mark as slave in zygotes.
+    # And this allow CIFS mounting and other app databases.
+    # mkdir /mnt/shell/emulated 0700 shell shell
+    # mount tmpfs tmpfs /storage mode=0751,uid=0,gid=1028
+    # mount tmpfs tmpfs /mnt/shell mode=0700,uid=0,gid=0
 
+    # Directory for putting things only root should see.
+    
     mkdir /mnt/secure 0700 root root
     mkdir /mnt/secure/asec 0700 root root
     mkdir /mnt/asec 0755 root system
@@ -104,11 +108,13 @@ on init
     symlink /storage/self/primary /mnt/sdcard
     symlink /mnt/user/0/primary /mnt/runtime/default/self/primary
 
+
     # root memory control cgroup, used by lmkd
-    mkdir /dev/memcg 0700 root system
-    mount cgroup none /dev/memcg memory
+    #mkdir /dev/memcg 0700 root system
+    #mount cgroup none /dev/memcg memory
     # app mem cgroups, used by activity manager, lmkd and zygote
     mkdir /dev/memcg/apps/ 0755 system system
+
 
 #   write /proc/sys/kernel/panic_on_oops 1
     write /proc/sys/kernel/hung_task_timeout_secs 0

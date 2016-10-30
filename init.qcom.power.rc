@@ -154,5 +154,4 @@ on property:recovery.perf.mode=0
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
 
     rm /data/system/perfd/default_values
-
-start mpdecision
+    start mpdecision
