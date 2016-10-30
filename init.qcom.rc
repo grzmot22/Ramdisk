@@ -456,15 +456,6 @@ service ledify /system/bin/ledify
     seclabel u:r:init:s0
     oneshot
 
-<<<<<<< HEAD
-on property:sys.boot_completed=1
-    start qcom-post-boot
-
-on property:init.svc.wpa_supplicant=stopped
-    stop dhcpcd
-
-=======
->>>>>>> 4853f2a... Updates from 20160921 build
 service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
