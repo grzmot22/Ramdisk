@@ -30,14 +30,15 @@ import init.qcom.usb.rc
 import init.target.rc
 import init.carrier.rc
 
+    mount debugfs debugfs /sys/kernel/debug
+    chmod 0755 /sys/kernel/debug
+
 on init
-    export LD_SHIM_LIBS /system/lib/libril.so|libsamsung_symbols.so
+    export LD_SHIM_LIBS /system/lib/libril.so|libshim_ril.so
 
     # Set permissions for persist partition
     mkdir /persist 0771 system system
 
-    # Support legacy paths
-    symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
 
 on early-boot
@@ -276,12 +277,13 @@ on post-fs-data
 
     mkdir /data/audio/ 0770 media audio
 
-    # PCC
-    chown system system /sys/devices/virtual/graphics/fb0/rgb
-    chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
-
-    # GPIO DVS
-    chown radio system /sys/class/secgpio_check/secgpio_check_all/secgpio_ctrl
+    # To prevent out of order acknowledgements from making
+    # connection tracking to treat them as not belonging to
+    # the connection they belong to.
+    # Otherwise, a weird issue happens in which some long
+    # connections on high-throughput links get dropped when
+    # an ack packet comes out of order
+    write /proc/sys/net/netfilter/nf_conntrack_tcp_be_liberal 1
 
     setprop vold.post_fs_data_done 1
 
@@ -441,7 +443,17 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
 service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
+    group system
+    disabled
+
+service kickstart /system/bin/qcks -i /firmware-mdm/image/
+    user root
+    group radio cache inet misc audio sdcard_rw log system
     oneshot
+    disabled
+
+on property:ro.baseband=mdm
+    start kickstart
 
 service cnd /system/bin/cnd
     class late_start
@@ -456,17 +468,24 @@ service rmt_storage /system/bin/rmt_storage
 on property:ro.boot.emmc=true
     start rmt_storage
 
-service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
-    class core
+service insthk /system/bin/insthk
+    class main
     user root
-    oneshot
-
-service bt-dun /system/bin/sh /system/etc/init.qcom.btdun.sh
-    class late_start
-    user bluetooth
-    group bluetooth net_bt_admin inet
     disabled
     oneshot
+    seclabel u:r:insthk:s0
+
+
+# LEDify
+service ledify /system/bin/ledify
+     class late_start
+     user root
+     group shell
+     seclabel u:r:init:s0
+     oneshot
+
+on property:sys.qseecomd.enable=true
+    start insthk
 
 service bt-sap /system/bin/sapd 15
     user bluetooth
@@ -540,51 +559,10 @@ service wpa_supplicant /system/bin/wpa_supplicant -g@android:wpa_wlan0 \
     disabled
     oneshot
 
-service dhcpcd_wlan0 /system/bin/dhcpcd -ABKLG
-    class late_start
-    disabled
-    oneshot
-
-service dhcpcd_p2p /system/bin/dhcpcd -ABKLG
-    class late_start
-    disabled
-    oneshot
-
-service iprenew_wlan0 /system/bin/dhcpcd -n
-    class late_start
-    disabled
-    oneshot
-
-service iprenew_p2p /system/bin/dhcpcd -n
-    class late_start
-    disabled
-    oneshot
-
-service dhcpcd_bt-pan /system/bin/dhcpcd -BKLG
-    class late_start
-    disabled
-    oneshot
-
-service iprenew_bt-pan /system/bin/dhcpcd -n
-    class late_start
-    disabled
-    oneshot
-
-service loc_launcher /system/bin/loc_launcher
-    #loc_launcher will start as root and set its uid to gps
-    class late_start
-    group gps qcom_oncrpc inet net_raw qcom_diag net_admin wifi
-
-service wlandutservice /system/bin/wlandutservice
-    class main
-    user system
-    group wifi net_raw net_admin system inet
-    disabled
-    oneshot
-
 service macloader /system/bin/macloader
     class main
     oneshot
+    seclabel u:r:macloader:s0
 
 on property:init.svc.macloader=stopped
     chown system root /data/.rev
