@@ -188,7 +188,6 @@
 /system/bin/sgdisk      u:object_r:sgdisk_exec:s0
 /system/bin/blkid       u:object_r:blkid_exec:s0
 /system/bin/tzdatacheck u:object_r:tzdatacheck_exec:s0
-/system/bin/ledify      u:object_r:system_file:s0
 
 #############################
 # Vendor files
