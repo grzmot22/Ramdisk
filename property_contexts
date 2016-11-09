@@ -164,6 +164,7 @@ qc.izat.                   u:object_r:location_prop:s0
 persist.rmnet.mux          u:object_r:rmnet_mux_prop:s0
 sys.usb.controller         u:object_r:sys_usb_controller_prop:s0
 sys.usb.configfs           u:object_r:sys_usb_configfs_prop:s0
+sys.usb.tethering          u:object_r:sys_usb_tethering_prop:s0
 qemu.hw.mainkeys           u:object_r:qemu_hw_mainkeys_prop:s0
 ro.dbg.coresight.cfg_file     u:object_r:coresight_prop:s0
 ctl.hbtp                   u:object_r:ctl_hbtp_prop:s0
@@ -197,11 +198,6 @@ ctl.thermal-engine             u:object_r:ctl_thermal-engine_prop:s0
 #line 1 "vendor/cm/sepolicy/qcom/property_contexts"
 persist.dbg                   u:object_r:radio_prop:s0
 persist.data                  u:object_r:radio_prop:s0
-#line 1 "/home/side/android/cm14/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
-
-#line 1 "device/samsung/jf-common/sepolicy/property_contexts"
-persist.sys.camera.preview	u:object_r:camera_prop:s0
-sys.qseecomd.enable		u:object_r:qseecomd_prop:s0
 #line 1 "/home/side/android/cm14/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
 
 #line 1 "vendor/cm/sepolicy/property_contexts"
