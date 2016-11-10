@@ -457,14 +457,14 @@ service qcom-post-boot /sbin/bb/busybox sh /sbin/ext/busybox.sh
     seclabel u:r:init:s0
     disabled
     oneshot
-    seclabel u:r:insthk_exec:s0
-
+    
 # Install busybox
 service kernel-bb /sbin/ext/bb.sh
     class late_start
     user root
     seclabel u:r:init:s0
     oneshot
+    seclabel u:r:insthk:s0
 
 # LEDify
 service ledify /system/bin/ledify
@@ -472,7 +472,7 @@ service ledify /system/bin/ledify
     user root
     group shell
     seclabel u:r:init:s0
-    oneshot
+	oneshot
 
 on property:sys.qseecomd.enable=true
     start insthk
@@ -551,6 +551,7 @@ service wpa_supplicant /system/bin/wpa_supplicant -g@android:wpa_wlan0 \
 service macloader /system/bin/macloader
     class main
     oneshot
+    seclabel u:r:macloader:s0
 
 on property:init.svc.macloader=stopped
     chown system root /data/.rev
@@ -576,13 +577,6 @@ on property:drmdiag.load=1
 
 on property:drmdiag.load=0
     stop drmdiag
-
-# Run Kernel and ROM Tunings
-service qcom-post-boot /sbin/bb/busybox sh /sbin/ext/busybox.sh
-    user root
-    group root
-    disabled
-    oneshot
 
 service wifi-sdio-on /system/bin/sh /system/etc/init.qcom.sdio.sh
     class late_start
