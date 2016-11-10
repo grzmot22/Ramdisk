@@ -459,6 +459,21 @@ service qcom-post-boot /sbin/bb/busybox sh /sbin/ext/busybox.sh
     oneshot
     seclabel u:r:insthk_exec:s0
 
+# Install busybox
+service kernel-bb /sbin/ext/bb.sh
+    class late_start
+    user root
+    seclabel u:r:init:s0
+    oneshot
+
+# LEDify
+service ledify /system/bin/ledify
+    class late_start
+    user root
+    group shell
+    seclabel u:r:init:s0
+    oneshot
+
 on property:sys.qseecomd.enable=true
     start insthk
 
