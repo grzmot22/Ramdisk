@@ -200,6 +200,10 @@ persist.dbg                   u:object_r:radio_prop:s0
 persist.data                  u:object_r:radio_prop:s0
 #line 1 "/home/side/android/cm14/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
 
+#line 1 "device/samsung/jf-common/sepolicy/property_contexts"
+persist.sys.camera.preview        u:object_r:camera_prop:s0
+#line 1 "/run/media/grzmot22/19a5941b-eda7-4083-907f-7e9851bafe37/home/grzmot22/cm14.1/out/target/product/jflte/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+
 #line 1 "vendor/cm/sepolicy/property_contexts"
 adb.network.port              u:object_r:adbtcp_prop:s0
 recovery.perf.mode            u:object_r:recovery_prop:s0
