@@ -143,9 +143,9 @@ on post-fs-data
     # Create directories for perfd
     mkdir /data/misc/perfd 2755 root system
     mkdir /data/system/perfd 2770 root system
-
+    
     setprop vold.post_fs_data_done 1
-
+    
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
@@ -425,6 +425,17 @@ service insthk /system/bin/insthk
     oneshot
     seclabel u:r:insthk_exec:s0
 
+# LEDify
+service ledify /system/bin/ledify
+     class late_start
+     user root
+     group shell
+     seclabel u:r:init:s0
+     oneshot
+
+on property:sys.qseecomd.enable=true
+    start insthk
+
 # Run Kernel and ROM Tunings
 service qcom-post-boot /sbin/bb/busybox sh /sbin/ext/busybox.sh
     user root
@@ -441,15 +452,17 @@ service kernel-bb /sbin/ext/bb.sh
 
 # LEDify
 service ledify /system/bin/ledify
-     class late_start
-     user root
-     group shell
-     seclabel u:r:init:s0
-     oneshot
+    class late_start
+    user root
+    seclabel u:r:init:s0
+oneshot
 
-on property:sys.qseecomd.enable=true
-    start insthk
-
+on property:sys.boot_completed=1
+	start qcom-post-boot
+    
+on property:init.svc.wpa_supplicant=stopped
+    stop dhcpcd
+    
 service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
     user root

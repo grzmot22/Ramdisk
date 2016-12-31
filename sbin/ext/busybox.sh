@@ -44,7 +44,7 @@ if [ -e /system/wget/wget ]; then
 	$BB ln -s /system/wget/wget /system/xbin/wget;
 fi;
 if [ -e /su/bin/su ]; then
-	$BB chmod 06755 /system/xbin/su;
+	$BB chmod 06755 /su/bin/su;
 fi;
 if [ -e /su/bin/daemonsu ]; then
 	$BB chmod 06755 /su/bin/daemonsu;
